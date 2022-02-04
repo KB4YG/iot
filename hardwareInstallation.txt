@@ -17,3 +17,5 @@ Use the power input of the UPS HAT to power your system. (DO NOT PLUG BOTH PI an
 
 6. Now install the modem hat
 
+Link to larger case to fit everything: https://www.polycase.com/zh-100802 
+
