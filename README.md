@@ -1,7 +1,7 @@
 # iot
 
 
-##Hardware Installation
+## Hardware Installation
 First mount the BMS:
 
 (Step 1 is optional. I don't think we actually need it since it adds extra power consumption.)
