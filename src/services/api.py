@@ -50,7 +50,7 @@ import AWSIoTPythonSDK.MQTTLib as AWSIoTPyMQTT
 
 
 
-def sendParkingData(number):
+def sendParkingData(number, temp):
   # Define ENDPOINT, CLIENT_ID, PATH_TO_CERTIFICATE, PATH_TO_PRIVATE_KEY, PATH_TO_AMAZON_ROOT_CA_1, MESSAGE, TOPIC, and RANGE
   ENDPOINT = "afabojvlqjyw-ats.iot.us-west-2.amazonaws.com"
   CLIENT_ID = "basicPubSub"
@@ -64,7 +64,7 @@ def sendParkingData(number):
     "OpenHandicap": "-1",
     "UsedGeneral": str(number),
     "UsedHandicap": "-1",
-    "Temp": "42",
+    "Temp": temp,
     "Confidence": "80"
   }
   TOPIC = "topic_1"

@@ -1,4 +1,4 @@
-from getWeatherConditions import * 
+from ..src.services.getWeatherConditions import getWeatherConditions
 #Positive Lat = North of Equator
 # Negative Lat = South of Equator
 #Postitive Long  = East of Prime Meridian 

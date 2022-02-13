@@ -22,36 +22,48 @@ def getWeatherConditions(lat, long, units):
         if weather.main.temp > 32:
             if(weather.weather[0].main =="Clear"):
                 print("Weather is clear for normal operations")
-                return 0
+                message = { 'code': 0, 'desc': 'Weather is clear for normal operations', 'temp': weather.main.temp}
+                return message
             else:
                  if weather.weather[0].main== "Rain" or weather.weather[0].main== "Clouds":
                      print("Temperature looks good, weather is bad, or there are clouds ")
-                     return 1
+                     message = { 'code': 1, 'desc': 'Temperature looks good, weather is bad, or there are clouds', 'temp': weather.main.temp}
+                     return message
         else:
             if(weather.weather[0].main =="Clear"):
                 print("Weather is clear, but temperature is below freezing")
-                return 2
+                message = { 'code': 2, 'desc': 'Weather is clear, but temperature is below freezing', 'temp': weather.main.temp}
+                return message
+                
             else:
                  if weather.weather[0].main== "Rain" or weather.weather[0].main== "Clouds":
                      print("Temperature is below freezing, weather is bad, or there are clouds")
-                     return 3
+                     message = { 'code': 3, 'desc': 'Temperature is below freezing, weather is bad, or there are clouds', 'temp': weather.main.temp}
+                     return message
+                     
     if units == "metric":
         if weather.main.temp > 0:
             if(weather.weather[0].main =="Clear"):
                 print("Weather is clear for normal operations")
-                return 0
+                message = { 'code': 0, 'desc': 'Weather is clear for normal operations', 'temp': weather.main.temp}
+                return message
+                
             else:
                  if weather.weather[0].main== "Rain":
                      print("Temperature looks good, but bad weather may occur")
-                     return 1
+                     message = { 'code': 1, 'desc': 'Temperature looks good, but bad weather may occur', 'temp': weather.main.temp}
+                     return message
         else:
             if(weather.weather[0].main =="Clear"):
                 print("Weather is clear, but temperature is below freezing")
-                return 2
+                message = { 'code': 2, 'desc': 'Weather is clear, but temperature is below freezing', 'temp': weather.main.temp}
+                return message
             else:
                  if weather.weather[0].main== "Rain":
-                     print("Temperature is below freezing, and bad weather may occur")     
-                     return 3 
+                     print("Temperature is below freezing, and bad weather may occur") 
+                     message = { 'code': 3, 'desc': 'Temperature is below freezing, and bad weather may occur', 'temp': weather.main.temp}
+                     return message    
+                      
     
 
 
