@@ -11,8 +11,8 @@ def mainRun():
     lat= 44.5646 
     lon= -123.2620 
     units = "imperial"
-    weatherCondtions = getWeatherConditions(lat, lon, units)
-    print(weatherCondtions)
+    weatherConditions = getWeatherConditions(lat, lon, units)
+    print(weatherConditions)
 
     #take image
     #number is the time in milliseconds to expose the sensor (larger number = longer exposure)
@@ -26,9 +26,9 @@ def mainRun():
 
     #Need to update this to send in the weather data as well.
     if "car" in count:
-        sendParkingData(count["car"], weatherCondtions.temp)
+        sendParkingData(count["car"], weatherConditions.temp)
     else:
-        sendParkingData(0, weatherCondtions.temp)
+        sendParkingData(0, weatherConditions.temp)
 
     print("Successfully returned from the backend code")
     
