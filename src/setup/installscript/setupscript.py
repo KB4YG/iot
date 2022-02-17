@@ -56,14 +56,6 @@ GIT_REPOS = [
 ]
 
 def installPackages():
-    
-    print("Proceeding to set up this Raspberry Pi with the following configuration in 10 seconds: ")
-    print("NODE ID:             " + NODE_ID)
-    print("NODE NAME:           " + NODE_NAME)
-    print("ACCESSIBLE SPOTS:    " + str(ACCESSIBLE_SPOTS))
-    print("GITHUB CLI KEY:      " + GITHUB_CLI_KEY)
-    sleep(10)
-
     # Install system packages
     print(" <==== Starting Installing Linux Packes ====>") 
     os.system(APT_UPDATE)
@@ -129,6 +121,14 @@ def rebootPi():
 
 
 def main():
+    
+    print("Proceeding to set up this Raspberry Pi with the following configuration in 10 seconds: ")
+    print("NODE ID:             " + NODE_ID)
+    print("NODE NAME:           " + NODE_NAME)
+    print("ACCESSIBLE SPOTS:    " + str(ACCESSIBLE_SPOTS))
+    print("GITHUB CLI KEY:      " + GITHUB_CLI_KEY)
+    sleep(10)
+
     # TODO get command line arguments to see which to skip 
     if INSTALL_PACKAGES: installPackages()
     if SET_CONFIG_FILE: setConfigFile()
