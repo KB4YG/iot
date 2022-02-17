@@ -4,6 +4,7 @@ from services.api import sendParkingData
 from setup.config import *
 from ml.img_classifier import imgClassify
 from services.getWeatherConditions import getWeatherConditions
+from hardware.schedule import turnOffAndTurnOn
 MDL_PATH = 'ml/models/coco_ssd_mobilenet_v1_1.0_quant_2018_06_29' #TODO Move to constants
 
 def mainRun():
@@ -28,9 +29,11 @@ def mainRun():
     if "car" in count:
         sendParkingData(count["car"], weatherConditions.temp)
     else:
-        sendParkingData(0, weatherConditions.temp)
+        print(weatherConditions["temp"])
+        sendParkingData(0, weatherConditions["temp"])
 
     print("Successfully returned from the backend code")
+    turnOffAndTurnOn(1)
     
     
 # Modify settings if response says to. i.e. change interval or sleep.

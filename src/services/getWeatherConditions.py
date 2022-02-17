@@ -22,46 +22,46 @@ def getWeatherConditions(lat, long, units):
         if weather.main.temp > 32:
             if(weather.weather[0].main =="Clear"):
                 print("Weather is clear for normal operations")
-                message = { 'code': 0, 'desc': 'Weather is clear for normal operations', 'temp': weather.main.temp}
+                message = { 'code': 0, 'desc': 'Weather is clear for normal operations', 'temp': weather.main.temp, 'sunrise': weather.sys.sunrise, 'sunset': weather.sys.sunset}
                 return message
             else:
                  if weather.weather[0].main== "Rain" or weather.weather[0].main== "Clouds":
                      print("Temperature looks good, weather is bad, or there are clouds ")
-                     message = { 'code': 1, 'desc': 'Temperature looks good, weather is bad, or there are clouds', 'temp': weather.main.temp}
+                     message = { 'code': 1, 'desc': 'Temperature looks good, weather is bad, or there are clouds', 'temp': weather.main.temp, 'sunrise': weather.sys.sunrise, 'sunset': weather.sys.sunset}
                      return message
         else:
             if(weather.weather[0].main =="Clear"):
                 print("Weather is clear, but temperature is below freezing")
-                message = { 'code': 2, 'desc': 'Weather is clear, but temperature is below freezing', 'temp': weather.main.temp}
+                message = { 'code': 2, 'desc': 'Weather is clear, but temperature is below freezing', 'temp': weather.main.temp, 'sunrise': weather.sys.sunrise, 'sunset': weather.sys.sunset}
                 return message
                 
             else:
                  if weather.weather[0].main== "Rain" or weather.weather[0].main== "Clouds":
                      print("Temperature is below freezing, weather is bad, or there are clouds")
-                     message = { 'code': 3, 'desc': 'Temperature is below freezing, weather is bad, or there are clouds', 'temp': weather.main.temp}
+                     message = { 'code': 3, 'desc': 'Temperature is below freezing, weather is bad, or there are clouds', 'temp': weather.main.temp, 'sunrise': weather.sys.sunrise, 'sunset': weather.sys.sunset}
                      return message
                      
     if units == "metric":
         if weather.main.temp > 0:
             if(weather.weather[0].main =="Clear"):
                 print("Weather is clear for normal operations")
-                message = { 'code': 0, 'desc': 'Weather is clear for normal operations', 'temp': weather.main.temp}
+                message = { 'code': 0, 'desc': 'Weather is clear for normal operations', 'temp': weather.main.temp, 'sunrise': weather.sys.sunrise, 'sunset': weather.sys.sunset}
                 return message
                 
             else:
                  if weather.weather[0].main== "Rain":
                      print("Temperature looks good, but bad weather may occur")
-                     message = { 'code': 1, 'desc': 'Temperature looks good, but bad weather may occur', 'temp': weather.main.temp}
+                     message = { 'code': 1, 'desc': 'Temperature looks good, but bad weather may occur', 'temp': weather.main.temp, 'sunrise': weather.sys.sunrise, 'sunset': weather.sys.sunset}
                      return message
         else:
             if(weather.weather[0].main =="Clear"):
                 print("Weather is clear, but temperature is below freezing")
-                message = { 'code': 2, 'desc': 'Weather is clear, but temperature is below freezing', 'temp': weather.main.temp}
+                message = { 'code': 2, 'desc': 'Weather is clear, but temperature is below freezing', 'temp': weather.main.temp, 'sunrise': weather.sys.sunrise, 'sunset': weather.sys.sunset}
                 return message
             else:
                  if weather.weather[0].main== "Rain":
                      print("Temperature is below freezing, and bad weather may occur") 
-                     message = { 'code': 3, 'desc': 'Temperature is below freezing, and bad weather may occur', 'temp': weather.main.temp}
+                     message = { 'code': 3, 'desc': 'Temperature is below freezing, and bad weather may occur', 'temp': weather.main.temp, 'sunrise': weather.sys.sunrise, 'sunset': weather.sys.sunset}
                      return message    
                       
     
