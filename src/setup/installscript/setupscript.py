@@ -25,6 +25,9 @@ INSTALL_PACKAGES = 1
 SET_CONFIG_FILE = 1
 GET_GIT_REPOS = 1
 SET_CERTIFICATES = 1
+ENABLE_AUTO_START = 1
+GENERATE_CONFIG_FILE = 1
+
 
 #Commands and Packages to be executed
 APT_UPDATE = "apt-get update"
@@ -118,10 +121,12 @@ def rebootPi():
     os.system("sudo reboot")
     return
 
-
+def generateConfigFile():
+    # TODO create a config file with constants for main.py to use with settings like NODE ID, NODE NAME, etc.
+    return
 
 def main():
-    
+
     print("Proceeding to set up this Raspberry Pi with the following configuration in 10 seconds: ")
     print("NODE ID:             " + NODE_ID)
     print("NODE NAME:           " + NODE_NAME)
@@ -130,10 +135,13 @@ def main():
     sleep(10)
 
     # TODO get command line arguments to see which to skip 
-    if INSTALL_PACKAGES: installPackages()
-    if SET_CONFIG_FILE: setConfigFile()
-    if GET_GIT_REPOS: getGitRepos()
-    if SET_CERTIFICATES: setCertificates()
+    if INSTALL_PACKAGES:        installPackages()
+    if SET_CONFIG_FILE:         setConfigFile()
+    if GET_GIT_REPOS:           getGitRepos()
+    if SET_CERTIFICATES:        setCertificates()
+    if ENABLE_AUTO_START:       enableAutoStart()
+    if GENERATE_CONFIG_FILE:    generateConfigFile()
+
     rebootPi()
 
 if __name__ == '__main__':
