@@ -32,11 +32,14 @@ def takepicDark(exposureTime):
 def takepic(exposureTime): 
     fileName = "img_" + str(time.time()) + ".jpg"
     filePath = "./img/" + fileName
-    command = "libcamera-still -t " + str(exposureTime) + " -o "  + filePath
+    # command = "libcamera-still -t " + str(exposureTime) + " -o "  + filePath
     print(command)
-    os.system(command)
-    sleep(10)
-    
+    # os.system(command)
+    # sleep(10)
+    camera = PiCamera()
+    # Camera warm-up time
+    sleep(2)
+    camera.capture(filePath)
     f = open(filePath, "r")
     if f:
         print("File opened successfully")
