@@ -50,22 +50,22 @@ import AWSIoTPythonSDK.MQTTLib as AWSIoTPyMQTT
 
 
 
-def sendParkingData(number, temp):
+def sendParkingData(data, temp):
   # Define ENDPOINT, CLIENT_ID, PATH_TO_CERTIFICATE, PATH_TO_PRIVATE_KEY, PATH_TO_AMAZON_ROOT_CA_1, MESSAGE, TOPIC, and RANGE
   ENDPOINT = "afabojvlqjyw-ats.iot.us-west-2.amazonaws.com"
   CLIENT_ID = "basicPubSub"
   PATH_TO_CERTIFICATE = "/home/pi/iot/src/setup/certificates/TestNode1/23af9987dae6a24f2cf0805ae70a74425e67743e0fca1fc70fbd68a87593c6e9-certificate.pem.crt"
   PATH_TO_PRIVATE_KEY = "/home/pi/iot/src/setup/certificates/TestNode1/23af9987dae6a24f2cf0805ae70a74425e67743e0fca1fc70fbd68a87593c6e9-private.pem.key"
   PATH_TO_AMAZON_ROOT_CA_1 = "/home/pi/iot/src/setup/certificates/TestNode1/AmazonRootCA1.pem"
-  #MESSAGE = "Hello World – What's going on DAVID"
+
   MESSAGE = {
     "LocationId": LOCATION_ID,
-    "OpenGeneral": str(NUMBER_OF_GENERAL_SPACES - number), 
-    "OpenHandicap": "-1",
-    "UsedGeneral": str(number),
-    "UsedHandicap": "-1",
+    "OpenGeneral": NUMBER_OF_GENERAL_SPACES - data['vehicles'],
+    "OpenHandicap": -1,
+    "UsedGeneral": data['vehicles'],
+    "UsedHandicap": -1,
     "Temp": temp,
-    "Confidence": "80"
+    "Confidence": data['confidence-threshold']
   }
   TOPIC = "topic_1"
   RANGE = 20

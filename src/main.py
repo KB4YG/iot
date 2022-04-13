@@ -2,15 +2,16 @@
 from hardware.camera import cameraHandler
 from services.api import sendParkingData
 from setup.config import *
-from ml.img_classifier import imgClassify
+# from ml.img_classifier import imgClassify
+from obj_detection import objDetection
 from services.getWeatherConditions import getWeatherConditions
 from hardware.schedule import turnOffAndTurnOn
-MDL_PATH = 'ml/models/coco_ssd_mobilenet_v1_1.0_quant_2018_06_29' #TODO Move to constants
+MDL_PATH = 'models/coco_ssd_mobilenet_v1_1.0_quant_2018_06_29' #TODO Move to constants
 
 def mainRun():
     #Need to get lat and long from gps data?
-    lat= 44.5646 
-    lon= -123.2620 
+    lat = 44.5646
+    lon = -123.2620
     units = "imperial"
     weatherConditions = getWeatherConditions(lat, lon, units)
     print(weatherConditions)
@@ -21,16 +22,15 @@ def mainRun():
     print(filePath)
 
     #send image to ml
-    _, count = imgClassify(MDL_PATH, filePath)
-    print(count)
+    result = objDetection(MDL_PATH, filePath)
+    print("Number of vehicles: ", result["vehicles"])
+    print("Number of pedestrians: ", result["pedestrians"])
+    print("Number of objects: ", result["objects"])
+    print("Error: ", result["error"])
     # send data to backend
 
     #Need to update this to send in the weather data as well.
-    if "car" in count:
-        sendParkingData(count["car"], weatherConditions.temp)
-    else:
-        print(weatherConditions["temp"])
-        sendParkingData(0, weatherConditions["temp"])
+    sendParkingData(result, weatherConditions.temp)
 
     print("Successfully returned from the backend code")
     turnOffAndTurnOn(1)
