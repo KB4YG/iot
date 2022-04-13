@@ -14,7 +14,7 @@ def convertLatLongToXY(lat, long):
 
 # Queries ODF fire danger website and returns current danger level for a given location
 # This URL address was extracted from the ODF website and is not guaranteed to work
-def getWeatherConditions(lat, long):
+def getFireDangerConditions(lat, long):
     x, y = convertLatLongToXY(lat, long)  # ArcGis API requires xy points (EPSG:3857) instead of long/lat (EPSG:4326)
     if x == float('inf') or y == float('inf'):
         print("Error: Invalid coordinates, values are incorrect or you may have mixed Latitude and Longitude")
