@@ -85,19 +85,6 @@ This repo contains all the code and setup instructions for running our running s
 There are a view dependecies that can be tricky to install. Tensorflow lite is one of them. Tested on linux, pythom 3.9
 
 ```bash
-# Requires the latest pip
-pip install --upgrade pip
-
-#install cv2 for image processing
-pip install opencv-python
-pip install numpy
-
-# Install tensorflow
-pip install tensorflow
-pip install tflite_support>=0.3.0
-
-# install local package objdetection must clone and cd into the repo
-pip install -e .
 ```
    
 <!-- Running Tests -->
@@ -112,39 +99,8 @@ To run tests, run the following command
 <!-- Usage -->
 ## :eyes: Usage
 
-### From Commandline
-
-<details>
-  <summary>Flags</summary>
-  <ul>
-    <li>--image # Path to .png or .jpg image</li>
-    <li>--model # Path to model directory, should contain detect.tflite file</li>
-  </ul>
-</details>
-
 ```bash
   python detect.py --image {FULL_IMG_PATH} --model coco_ssd_mobilenet_v1_1.0_quant_2018_06_29
-```
-
-### From function
-`image_classifier.py`
-
-<details>
-  <summary>Args</summary>
-  <ul>
-    <li>IMG_PATH #(REQUIRED) Path to .png or .jpg image</li>
-    <li>MODEL_PATH #(REQUIRED) Path to model directory, should contain detect.tflite file</li>
-    <li>MIN_CONF_LEVEL #(OPTIONAL) minimum confidence level to accept (float 0-1), default 0.5</li>
-    <li>GRAPH_NAME #(OPTIONAL) name of .tflite file, default detect.tflite</li>
-    <li>LABELMAP_NAME #(OPTIONAL) name of label file, default labelmap.txt</li>
-    <li>SAVE_IMG #(OPTIONAL) Where or not to save image with detection boxes, default False </li>
-    <li>COORDS #(OPTIONAL) Where or not to return coordinates of detect object, default False </li>
-  </ul>
-</details>
-
-```python
-  from image_classifier import image_classifier
-  image_classifier(model_path, image_path)
 ```
 
 <!-- License -->
