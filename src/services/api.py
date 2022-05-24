@@ -53,23 +53,33 @@ import AWSIoTPythonSDK.MQTTLib as AWSIoTPyMQTT
 def sendParkingData(number, temp):
   # Define ENDPOINT, CLIENT_ID, PATH_TO_CERTIFICATE, PATH_TO_PRIVATE_KEY, PATH_TO_AMAZON_ROOT_CA_1, MESSAGE, TOPIC, and RANGE
   ENDPOINT = "afabojvlqjyw-ats.iot.us-west-2.amazonaws.com"
-  CLIENT_ID = "basicPubSub"
-  PATH_TO_CERTIFICATE = "/home/pi/iot/src/setup/certificates/TestNode1/23af9987dae6a24f2cf0805ae70a74425e67743e0fca1fc70fbd68a87593c6e9-certificate.pem.crt"
-  PATH_TO_PRIVATE_KEY = "/home/pi/iot/src/setup/certificates/TestNode1/23af9987dae6a24f2cf0805ae70a74425e67743e0fca1fc70fbd68a87593c6e9-private.pem.key"
-  PATH_TO_AMAZON_ROOT_CA_1 = "/home/pi/iot/src/setup/certificates/TestNode1/AmazonRootCA1.pem"
-  #MESSAGE = "Hello World – What's going on DAVID"
-  MESSAGE = {
-    "LocationId": LOCATION_ID,
-    "OpenGeneral": str(NUMBER_OF_GENERAL_SPACES - number), 
-    "OpenHandicap": "-1",
-    "UsedGeneral": str(number),
-    "UsedHandicap": "-1",
-    "Temp": temp,
-    "Confidence": "80"
+  CLIENT_ID = "TestNode1"
+  PATH_TO_CERTIFICATE = "./services/23af9987dae6a24f2cf0805ae70a74425e67743e0fca1fc70fbd68a87593c6e9-certificate.pem.crt"
+  PATH_TO_PRIVATE_KEY = "./services/23af9987dae6a24f2cf0805ae70a74425e67743e0fca1fc70fbd68a87593c6e9-private.pem.key"
+  PATH_TO_AMAZON_ROOT_CA_1 = "./services/AmazonRootCA1.pem"
+ 
+  MESSAGE ={
+  "state": {
+    "desired": {
+      "welcome": "aws-iot"
+    },
+    "reported": {
+      "welcome": "aws-iot",
+      "LocationId": "15751bba-ff7a-4f12-b52c-9bf1db0ac5ad",
+      "OpenGeneral": NUMBER_OF_GENERAL_SPACES - number,
+      "OpenHandicap": -1,
+      "UsedGeneral": number,
+      "UsedHandicap": -1,
+      "Temp": temp,
+      "Confidence": 54,
+      "ParkingLotId": "15751bba-ff7a-4f12-b52c-9bf1db0ac5ad",
+      "TotalHandicap": 0
+    }
   }
-  TOPIC = "topic_1"
-  RANGE = 20
-
+}
+  TOPIC = "$aws/things/TestNode1/shadow/update"
+  RANGE = 1
+  #print(json.dumps(MESSAGE))
   myAWSIoTMQTTClient = AWSIoTPyMQTT.AWSIoTMQTTClient(CLIENT_ID)
   myAWSIoTMQTTClient.configureEndpoint(ENDPOINT, 8883)
   myAWSIoTMQTTClient.configureCredentials(PATH_TO_AMAZON_ROOT_CA_1, PATH_TO_PRIVATE_KEY, PATH_TO_CERTIFICATE)
@@ -77,10 +87,11 @@ def sendParkingData(number, temp):
   myAWSIoTMQTTClient.connect()
   print('Begin Publish')
   for i in range (RANGE):
-      data = "{}".format(MESSAGE)
-      message = {"message" : data}
+      #data = "{}".format(MESSAGE)
+      #message = {"message" : MESSAGE}
+      message = MESSAGE
       myAWSIoTMQTTClient.publish(TOPIC, json.dumps(message), 1) 
-      print("Published: '" + json.dumps(message) + "' to the topic: " + "'test/testing'")
+      print("Published: '" + json.dumps(message) + "' to the topic: " + "'$aws/things/TestNode1/shadow/update'")
       t.sleep(0.1)
   print('Publish End')
   myAWSIoTMQTTClient.disconnect()
