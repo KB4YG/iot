@@ -26,7 +26,7 @@ def mainRun():
       print(weatherConditions["temp"])
       sendParkingData(0, weatherConditions["temp"])     
     print("Successfully returned from the backend code")
-    #1 Specfies that the Pi will turn on and off every minute
+    #1 Specifies that the Pi will turn on and off every minute
     # Change that value to adjust the tick-rate of the updates. 
     #turnOffAndTurnOn(1)
     
