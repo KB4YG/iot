@@ -19,7 +19,7 @@ def mainRun():
     #take image
     #number is the time in milliseconds to expose the sensor (larger number = longer exposure)
     #filePath = cameraHandler(1000)
-    filePath = ["./two_cars.jpg", "./seven_cars.jpg", "./five_cars.jpg"]
+    filePath = ["./img/two_cars.jpg", "./img/seven_cars.jpg", "./img/five_cars.jpg"]
     #for i in range(len(filePath)):
     
       #send image to ml
