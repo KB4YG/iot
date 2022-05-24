@@ -1,7 +1,6 @@
 from power_api import SixfabPower, Definition, Event
 import time
 import requests
-# from ..services.getWeatherConditions import getWeatherConditions
 pms = SixfabPower()
 epoch = time.time()
 
@@ -61,7 +60,6 @@ def getCloudinessFactor():
     
 
 def getSunriseAndSunset():
-    #coordinates = readFile()
     lat= 44.5646 
     lon= -123.2620 
     units = "imperial"
@@ -82,7 +80,7 @@ def figureOutWhenToTurnBackOnAgain():
     sunset = weatherConditions["sunset"]
     # command sent from backend, with override?
 
-    #perform calculations
+    #perform calculations on 
 
     turnOffAndTurnOn(20)
 
