@@ -56,7 +56,7 @@ def sendParkingData(number, temp):
   CLIENT_ID = "TestNode1"
   PATH_TO_CERTIFICATE = "./setup/certificates/23af9987dae6a24f2cf0805ae70a74425e67743e0fca1fc70fbd68a87593c6e9-certificate.pem.crt"
   PATH_TO_PRIVATE_KEY = "./setup/certificates/23af9987dae6a24f2cf0805ae70a74425e67743e0fca1fc70fbd68a87593c6e9-private.pem.key"
-  PATH_TO_AMAZON_ROOT_CA_1 = "./setup/certificates/services/AmazonRootCA1.pem"
+  PATH_TO_AMAZON_ROOT_CA_1 = "./setup/certificates/AmazonRootCA1.pem"
  
   MESSAGE ={
   "state": {
