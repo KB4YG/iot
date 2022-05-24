@@ -44,7 +44,6 @@
   * [Tech Stack](#space_invader-tech-stack)
 - [Getting Started](#toolbox-getting-started)
   * [Prerequisites](#bangbang-prerequisites)
-  * [Running Tests](#test_tube-running-tests)
 - [Usage](#eyes-usage)
 - [FAQ](#grey_question-faq)
 - [License](#warning-license)
@@ -82,25 +81,17 @@ This repo contains all the code and setup instructions for running our running s
 <!-- Prerequisites -->
 ### :bangbang: Prerequisites
 
-There are a view dependecies that can be tricky to install. Tensorflow lite is one of them. Tested on linux, pythom 3.9
+In /src/setup/installscript on your Pi run this Python file to install necessary Python and Linux packages.
 
 ```bash
-```
-   
-<!-- Running Tests -->
-### :test_tube: Running Tests
-
-To run tests, run the following command
-
-```bash
-  pytest 
+  python setupscript.py 
 ```
 
 <!-- Usage -->
 ## :eyes: Usage
-
+In src/ run main.py. This script will auto turn off the Pi when complete and turn on when there is an interval.
 ```bash
-  python detect.py --image {FULL_IMG_PATH} --model coco_ssd_mobilenet_v1_1.0_quant_2018_06_29
+  python main.py
 ```
 
 <!-- License -->
