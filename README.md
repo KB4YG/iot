@@ -97,17 +97,11 @@ In src/ run main.py. This script will auto turn off the Pi when complete and tur
 <!-- License -->
 ## :warning: License
 
-!! TODO
+Distributed under the GPL-3.0 license. See [LICENSE.txt](https://github.com/KB4YG/iot/blob/main/LICENSE) for more information.
 
 
 <!-- Contact -->
 ## :handshake: Contact
-!! TODO
-
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
-
-Project Link: [https://github.com/Louis3797/awesome-readme-template](https://github.com/Louis3797/awesome-readme-template)
-
 
 <!-- Acknowledgments -->
 ## :gem: Acknowledgements
