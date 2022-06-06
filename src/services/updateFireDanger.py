@@ -42,13 +42,13 @@ def getWeatherConditions(lat, long):
     fd = fireResults[1]['attributes']
     print("Fire Danger Level: ", fd['FireDanger'])
     print("Fire Danger Restriction: ", fd['IfplRestrictionLevel'])
-    print("'PendingChangeDateTime': ", fd['PendingChangeDateTime']) # time last updated? time it was ment to be updated?
+    print("'PendingChangeDateTime': ", fd['PendingChangeDateTime']) # time last updated? time it was meant to be updated?
 
     # dependent on frontend team requirements may return full json object instead of just the fire danger level
     return fd['FireDanger'] # Low, Medium, High, None
 
 
-getWeatherConditions(44.576087, -123.370796) # Fitton green
+#getWeatherConditions(44.576087, -123.370796) # Fitton green
 
 
 """
@@ -56,7 +56,7 @@ Sample JSON response from ODF website:
 
 results is an array of 3 objects
 [0] is Regulated Use
-[1] is Fire Danger Levels (only one we use)
+[1] is Fire Danger Levels (only one we use and shown below)
 [2] is Industrial Fire Precaution Levels
 
 results= [
